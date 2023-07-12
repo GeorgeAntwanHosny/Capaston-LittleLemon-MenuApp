@@ -48,6 +48,8 @@ const Home = () => {
         </View>
         <ScrollView>
             <MenuItem />
+            <MenuItem />
+            <MenuItem />
           </ScrollView>
       </View>
     </ScrollView>

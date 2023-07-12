@@ -14,21 +14,26 @@ const MenuItem = () => {
     <View style={styles.ItemContainer}>
       <Text style={styles.ItemTitle}>Greek Salad </Text>
       <View style={styles.ItemDescriptionGroup}>
-        <Text style={styles.ItemDescription}>
-          The famous greek salad of crispy lettuce, peppers, olives and our
-          Chicag...
-        </Text>
+        <View style={styles.ItemPriceDescriptionGroup}>
+          <Text style={styles.ItemDescription}>
+            The famous greek salad of crispy lettuce, peppers, olives and our
+            Chicag...
+          </Text>
+          <Text style={styles.ItemPrice}> $12.99 </Text>
+        </View>
         <Image
           source={require('../assets/GreekSalad.png')}
           style={styles.ItemImage}
           resizeMode="cover"
         />
       </View>
-      <Text style={styles.ItemPrice}> $12.99 </Text>
     </View>
   );
 };
 const styles = StyleSheet.create({
+  ItemContainer: {
+    paddingBottom: 10,
+  },
   ItemTitle: {
     fontSize: 25,
     fontWeight: 'bold',
@@ -39,10 +44,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 15,
   },
-  ItemDescription: {
+  ItemPriceDescriptionGroup: {
     width: '55%',
+  },
+  ItemDescription: {
     fontSize: 18,
     color: '#646f64',
+    paddingBottom: 10,
   },
 
   ItemImage: {

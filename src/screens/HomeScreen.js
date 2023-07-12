@@ -9,6 +9,7 @@ import {
   Alert,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+import MenuItem from '../components/MenuItem';
 const Home = () => {
   return (
     <ScrollView>
@@ -43,7 +44,11 @@ const Home = () => {
           <Pressable style={styles.OrderDeleiveryButton}>
             <Text style={styles.OrderDeleiveryTextButton}>Drinks</Text>
           </Pressable>
+         
         </View>
+        <ScrollView>
+            <MenuItem />
+          </ScrollView>
       </View>
     </ScrollView>
   );

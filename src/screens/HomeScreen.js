@@ -11,12 +11,15 @@ import {
 import React, {useEffect, useState} from 'react';
 const Home = () => {
   return (
-    <View>
+    <ScrollView>
       <View style={styles.heroSection}>
-        <Text style={styles.heroSectionTitle}>Title</Text>
-        <Text style={styles.heroSectionTileBottom}>Titlesdown</Text>
-        <View style={styles.heroSectionDescription}>
-          <Text>Description</Text>
+        <Text style={styles.heroSectionTitle}>Little Lemon</Text>
+        <Text style={styles.heroSectionTileBottom}>Chicago</Text>
+        <View style={styles.groupDescription}>
+          <Text style={styles.heroSectionDescription}>
+            We are a family owned Mediterranean restaurant, focused on
+            traditional recipes served with a modern twist.
+          </Text>
           <Image
             style={styles.heroSectionImage}
             source={require('../assets/Heroimage.png')}
@@ -25,83 +28,106 @@ const Home = () => {
         </View>
         <TextInput style={styles.heroSectionTextInput} />
       </View>
-      <View>
-        <Text style={styles.OrderDeleiveryTitle}>ORDER DELVIEER NOW.</Text>
+      <View style={styles.OrderDeleiveryGroup}>
+        <Text style={styles.OrderDeleiveryTitle}>ORDER DELVIEER NOW</Text>
         <View style={styles.OrderDeleiveryGroupButton}>
           <Pressable style={styles.OrderDeleiveryButton}>
-            <Text style={styles.OrderDeleiveryTextButton}>Change</Text>
+            <Text style={styles.OrderDeleiveryTextButton}>Starters</Text>
           </Pressable>
           <Pressable style={styles.OrderDeleiveryButton}>
-            <Text style={styles.OrderDeleiveryTextButton}>Change</Text>
+            <Text style={styles.OrderDeleiveryTextButton}>Mains</Text>
           </Pressable>
           <Pressable style={styles.OrderDeleiveryButton}>
-            <Text style={styles.OrderDeleiveryTextButton}>Change</Text>
+            <Text style={styles.OrderDeleiveryTextButton}>Desserts</Text>
           </Pressable>
           <Pressable style={styles.OrderDeleiveryButton}>
-            <Text style={styles.OrderDeleiveryTextButton}>Change</Text>
-          </Pressable>
-          <Pressable style={styles.OrderDeleiveryButton}>
-            <Text style={styles.OrderDeleiveryTextButton}>Change</Text>
+            <Text style={styles.OrderDeleiveryTextButton}>Drinks</Text>
           </Pressable>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
   containerHeader: {
     display: 'flex',
-   
   },
-  heroSection:{
+  heroSection: {
     display: 'flex',
-    flexDirection: 'row',
-     backgroundColor: 'green',
-     color: 'white',
+    flexDirection: 'column',
+    backgroundColor: '#646f64',
+    color: 'white',
+    padding: 15,
+    gap: 5,
   },
   heroSectionTitle: {
-    color:'yellow',
+    color: 'yellow',
     fontSize: 30,
     fontWeight: 'bold',
   },
   heroSectionImage: {
-     width:200,
-     height:300,
-     borderColor: 'grey',
-     borderWidth:1,
-     borderRadius:10
+    width: 170,
+    height: 300,
+    borderColor: 'grey',
+    borderWidth: 1,
+    borderRadius: 10,
   },
   heroSectionTileBottom: {
-     
     fontSize: 30,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  groupDescription: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingBottom: 15,
+    gap: 6,
   },
   heroSectionDescription: {
     width: '50%',
-    fontSize:18,
-    
+    fontSize: 17,
+    color: 'white',
+    paddingTop: 15,
   },
-  heroSectionTextInput:{
+  heroSectionTextInput: {
     borderWidth: 1,
     borderColor: 'grey',
     padding: 10,
     borderRadius: 5,
     width: '100%',
-  }
+    backgroundColor: 'white',
+  },
+  OrderDeleiveryGroup: {
+    padding: 10,
+    backgroundColor: 'white',
+  },
+  OrderDeleiveryTitle: {
+    fontSize: 25,
+    color: '#646f64',
+  },
+  OrderDeleiveryGroupButton: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
   OrderDeleiveryButton: {
     paddingTop: 10,
     borderRadius: 10,
-    backgroundColor: 'grey',
-    marginVertical: 30,
-    width: 100,
+    backgroundColor: '#f3f3f3',
+    color: '#646f64',
+    borderColor: '#e9e9e9',
+    borderWidth: 1,
+
+    marginVertical: 15,
+    width: '24%',
     textAlign: 'center',
-    padding: 15,
-    marginRight: 20,
+    padding: 10,
+    marginRight: 5,
   },
   OrderDeleiveryTextButton: {
     textAlign: 'center',
-    color: 'white',
+    color: '#646f64',
     fontSize: 15,
+    fontWeight: 'bold',
   },
 });
 export default Home;

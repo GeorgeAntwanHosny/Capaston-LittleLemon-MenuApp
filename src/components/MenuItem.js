@@ -9,20 +9,20 @@ import {
   Alert,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-const MenuItem = () => {
+
+const MenuItem = ({name, price, description, image, category}) => {
   return (
     <View style={styles.ItemContainer}>
-      <Text style={styles.ItemTitle}>Greek Salad </Text>
+      <Text style={styles.ItemTitle}>{name}</Text>
       <View style={styles.ItemDescriptionGroup}>
         <View style={styles.ItemPriceDescriptionGroup}>
-          <Text style={styles.ItemDescription}>
-            The famous greek salad of crispy lettuce, peppers, olives and our
-            Chicag...
-          </Text>
-          <Text style={styles.ItemPrice}> $12.99 </Text>
+          <Text style={styles.ItemDescription}>{description}</Text>
+          <Text style={styles.ItemPrice}> ${price}</Text>
         </View>
         <Image
-          source={require('../assets/GreekSalad.png')}
+          source={{
+            uri: `https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/${image}?raw=true`,
+          }}
           style={styles.ItemImage}
           resizeMode="cover"
         />
@@ -33,6 +33,7 @@ const MenuItem = () => {
 const styles = StyleSheet.create({
   ItemContainer: {
     paddingBottom: 10,
+    padding:20,
   },
   ItemTitle: {
     fontSize: 25,

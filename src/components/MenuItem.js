@@ -33,7 +33,7 @@ const MenuItem = ({name, price, description, image, category}) => {
 const styles = StyleSheet.create({
   ItemContainer: {
     paddingBottom: 10,
-    padding:20,
+    padding: 20,
   },
   ItemTitle: {
     fontSize: 25,

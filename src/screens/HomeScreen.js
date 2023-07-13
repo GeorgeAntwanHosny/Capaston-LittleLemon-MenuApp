@@ -2,6 +2,12 @@ import {StyleSheet, View, FlatList} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import MenuItem from '../components/MenuItem';
 import HomeHeader from '../components/HomeHeader';
+import {
+  createTable,
+  DeleteAllData,
+  getDataSQLite,
+  InsertDataSQLite,
+} from '../utils/SQLiteDB';
 const Home = () => {
   const [menuData, setMenuData] = useState([]);
   useEffect(() => {
@@ -11,12 +17,34 @@ const Home = () => {
           'https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/capstone.json',
         );
         const jsonData = await data.json();
+        console.log('from fetch data');
         setMenuData(jsonData.menu);
+        for (let i = 0; i < jsonData.menu.length; i++) {
+          InsertDataSQLite([
+            jsonData.menu[i].name,
+            jsonData.menu[i].price,
+            jsonData.menu[i].description,
+            jsonData.menu[i].image,
+            jsonData.menu[i].category,
+          ]);
+        }
       } catch (e) {
         console.log(e);
       }
     };
-    fetchData();
+    const getFromSQLiteDB = async () => {
+      try {
+        // await DeleteAllData();
+        await createTable();
+        const data = await getDataSQLite();
+        console.log('Retrieved data test:', data.length);
+        data.length > 0 ? setMenuData(data) : fetchData();
+      } catch (error) {
+        console.log('Error:', error);
+      }
+    };
+
+    getFromSQLiteDB();
   }, []);
 
   return (

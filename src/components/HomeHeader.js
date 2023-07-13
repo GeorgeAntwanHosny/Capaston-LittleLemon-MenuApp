@@ -42,7 +42,6 @@ const HomeHeader = () => {
             <Text style={styles.OrderDeleiveryTextButton}>Drinks</Text>
           </Pressable>
         </View>
-        <View></View>
       </View>
     </View>
   );

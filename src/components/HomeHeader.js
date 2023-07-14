@@ -9,6 +9,8 @@ import {
 import React from 'react';
 import {filterDataSQLite} from '../utils/SQLiteDB';
 import {debounce} from 'lodash';
+import {SvgXml, xml, Line, Svg, Circle} from 'react-native-svg';
+import svg_search_icon from '../assets/search_icon.svg';
 
 const HomeHeader = ({setData}) => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -29,6 +31,25 @@ const HomeHeader = ({setData}) => {
     // console.log(text);
     handler(text);
   };
+  const SearchIcon = () => {
+    return (
+      <Svg
+        class="feather feather-search"
+        fill="none"
+        height="40"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="40"
+        color="black"
+        xmlns="http://www.w3.org/2000/svg">
+        <Circle cx="11" cy="11" r="8" />
+        <Line x1="21" x2="16.65" y1="21" y2="16.65" />
+      </Svg>
+    );
+  };
   return (
     <View>
       <View style={styles.heroSection}>
@@ -45,12 +66,19 @@ const HomeHeader = ({setData}) => {
             resizeMode="contain"
           />
         </View>
-        <TextInput
-          style={styles.heroSectionTextInput}
-          //onChange={setSearchTerm}
-          //value={searchTerm}
-          onChangeText={onChange}
-        />
+        {/* <SvgXml width="200" height="200" xml={svg_search_icon} /> */}
+        <View style={[styles.inputSearchGroup, styles.heroSectionTextInput]}>
+          <SearchIcon />
+          <TextInput
+            placeholder="Search by category"
+            //style={styles.heroSectionTextInput}
+            //onChange={setSearchTerm}
+            //value={searchTerm}
+            onChangeText={onChange}
+            keyboardAppearance="default"
+            keyboardType="default"
+          />
+        </View>
       </View>
       <View style={styles.OrderDeleiveryGroup}>
         <Text style={styles.OrderDeleiveryTitle}>ORDER DELVIEER NOW</Text>
@@ -121,12 +149,18 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingTop: 15,
   },
+  inputSearchGroup: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: 60,
+  },
   heroSectionTextInput: {
     borderWidth: 1,
     borderColor: 'grey',
     padding: 10,
     borderRadius: 5,
     width: '100%',
+
     backgroundColor: 'white',
   },
   OrderDeleiveryGroup: {

@@ -115,6 +115,7 @@ const Profile = ({navigation}) => {
             emailNotifactions,
             imageProfileUri,
           });
+          navigation.navigate('Home');
         },
       },
       {
@@ -308,7 +309,9 @@ const Profile = ({navigation}) => {
                 <Text style={styles.textButtonLogout}>Logout</Text>
               </Pressable>
               <View style={[styles.actionWraper, {paddingRight: 20}]}>
-                <Pressable style={[styles.buttonInlineForChanges]}>
+                <Pressable
+                  style={[styles.buttonInlineForChanges]}
+                  onPress={() => navigation.navigate('Home')}>
                   <Text style={styles.textButtonInline}>Discard Changes</Text>
                 </Pressable>
                 <Pressable

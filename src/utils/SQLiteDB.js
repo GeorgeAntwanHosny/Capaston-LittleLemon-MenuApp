@@ -83,7 +83,7 @@ export const filterDataSQLite = async filter => {
     db.transaction(tx => {
       tx.executeSql(
         'SELECT * FROM menu_item WHERE category LIKE ?',
-        [filter],
+        [`%${filter}%`],
         (tx, results) => {
           const rows = results.rows.raw();
           console.log('Data retrieved successfully:', rows);

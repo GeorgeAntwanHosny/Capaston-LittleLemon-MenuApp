@@ -12,7 +12,7 @@ export const createTable = async () => {
         'CREATE TABLE IF NOT EXISTS menu_item (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price FLOAT, description TEXT, image TEXT, category TEXT)',
         [],
         (tx, results) => {
-          console.log('Table created successfully');
+          // console.log('Table created successfully');
           resolve();
         },
         error => {
@@ -30,7 +30,7 @@ export const DeleteAllData = async () => {
         'DELETE from menu_item',
         [],
         (tx, results) => {
-          console.log('Table data deleted successfully');
+          //console.log('Table data deleted successfully');
           resolve();
         },
         error => {
@@ -48,7 +48,7 @@ export const InsertDataSQLite = async data => {
         'INSERT INTO menu_item (name, price, description, image, category) VALUES (?, ?, ?, ?, ?)',
         data,
         (tx, results) => {
-          console.log('Data inserted successfully');
+          // console.log('Data inserted successfully');
           resolve();
         },
         error => {
@@ -67,7 +67,7 @@ export const getDataSQLite = async () => {
         [],
         (tx, results) => {
           const rows = results.rows.raw();
-          console.log('Data retrieved successfully:', rows);
+          //console.log('Data retrieved successfully:', rows);
           resolve(rows);
         },
         error => {

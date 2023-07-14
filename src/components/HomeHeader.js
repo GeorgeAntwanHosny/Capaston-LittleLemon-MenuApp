@@ -9,12 +9,9 @@ import {
 import React from 'react';
 import {filterDataSQLite} from '../utils/SQLiteDB';
 import {debounce} from 'lodash';
-import {SvgXml, xml, Line, Svg, Circle} from 'react-native-svg';
-import svg_search_icon from '../assets/search_icon.svg';
+import SearchIcon from './SearchIcon';
 
 const HomeHeader = ({setData}) => {
-  const [searchTerm, setSearchTerm] = React.useState('');
-
   const handelFilter = async filter => {
     setData(await filterDataSQLite(filter));
   };
@@ -31,25 +28,7 @@ const HomeHeader = ({setData}) => {
     // console.log(text);
     handler(text);
   };
-  const SearchIcon = () => {
-    return (
-      <Svg
-        class="feather feather-search"
-        fill="none"
-        height="40"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        width="40"
-        color="black"
-        xmlns="http://www.w3.org/2000/svg">
-        <Circle cx="11" cy="11" r="8" />
-        <Line x1="21" x2="16.65" y1="21" y2="16.65" />
-      </Svg>
-    );
-  };
+
   return (
     <View>
       <View style={styles.heroSection}>
@@ -71,9 +50,6 @@ const HomeHeader = ({setData}) => {
           <SearchIcon />
           <TextInput
             placeholder="Search by category"
-            //style={styles.heroSectionTextInput}
-            //onChange={setSearchTerm}
-            //value={searchTerm}
             onChangeText={onChange}
             keyboardAppearance="default"
             keyboardType="default"

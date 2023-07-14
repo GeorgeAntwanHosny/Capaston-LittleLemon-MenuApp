@@ -8,6 +8,7 @@ import {
   getDataSQLite,
   InsertDataSQLite,
 } from '../utils/SQLiteDB';
+import {Text} from 'react-native-svg';
 const Home = () => {
   const [menuData, setMenuData] = useState([]);
   useEffect(() => {
@@ -46,7 +47,7 @@ const Home = () => {
 
     getFromSQLiteDB();
   }, []);
-
+  const Separator = () => <View style={styles.separator} />;
   return (
     <View style={styles.container}>
       <FlatList
@@ -65,6 +66,7 @@ const Home = () => {
         }}
         keyExtractor={item => item.name}
         ListHeaderComponent={<HomeHeader setData={setMenuData} />}
+        ItemSeparatorComponent={Separator}
       />
     </View>
   );
@@ -73,6 +75,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#ddd',
+    marginHorizontal: 16,
   },
 });
 export default Home;

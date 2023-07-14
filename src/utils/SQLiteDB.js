@@ -78,3 +78,22 @@ export const getDataSQLite = async () => {
     });
   });
 };
+export const filterDataSQLite = async filter => {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'SELECT * FROM menu_item WHERE category LIKE ?',
+        [filter],
+        (tx, results) => {
+          const rows = results.rows.raw();
+          console.log('Data retrieved successfully:', rows);
+          resolve(rows);
+        },
+        error => {
+          console.log('Error retrieving data:', error);
+          reject(error);
+        },
+      );
+    });
+  });
+};

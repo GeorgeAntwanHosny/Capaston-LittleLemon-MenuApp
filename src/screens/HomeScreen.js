@@ -64,7 +64,7 @@ const Home = () => {
           );
         }}
         keyExtractor={item => item.name}
-        ListHeaderComponent={HomeHeader}
+        ListHeaderComponent={<HomeHeader setData={setMenuData} />}
       />
     </View>
   );

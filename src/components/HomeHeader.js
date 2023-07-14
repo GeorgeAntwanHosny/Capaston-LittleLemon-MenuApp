@@ -7,7 +7,28 @@ import {
   TextInput,
 } from 'react-native';
 import React from 'react';
-const HomeHeader = () => {
+import {filterDataSQLite} from '../utils/SQLiteDB';
+import {debounce} from 'lodash';
+
+const HomeHeader = ({setData}) => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+  const handelFilter = async filter => {
+    setData(await filterDataSQLite(filter));
+  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handler = React.useCallback(
+    debounce(text => {
+      handelFilter(text);
+    }, 500),
+    [],
+  );
+
+  const onChange = text => {
+    // perform any event related action here
+    // console.log(text);
+    handler(text);
+  };
   return (
     <View>
       <View style={styles.heroSection}>
@@ -24,21 +45,34 @@ const HomeHeader = () => {
             resizeMode="contain"
           />
         </View>
-        <TextInput style={styles.heroSectionTextInput} />
+        <TextInput
+          style={styles.heroSectionTextInput}
+          //onChange={setSearchTerm}
+          //value={searchTerm}
+          onChangeText={onChange}
+        />
       </View>
       <View style={styles.OrderDeleiveryGroup}>
         <Text style={styles.OrderDeleiveryTitle}>ORDER DELVIEER NOW</Text>
         <View style={styles.OrderDeleiveryGroupButton}>
-          <Pressable style={styles.OrderDeleiveryButton}>
+          <Pressable
+            style={styles.OrderDeleiveryButton}
+            onPress={() => handelFilter('starters')}>
             <Text style={styles.OrderDeleiveryTextButton}>Starters</Text>
           </Pressable>
-          <Pressable style={styles.OrderDeleiveryButton}>
+          <Pressable
+            style={styles.OrderDeleiveryButton}
+            onPress={() => handelFilter('mains')}>
             <Text style={styles.OrderDeleiveryTextButton}>Mains</Text>
           </Pressable>
-          <Pressable style={styles.OrderDeleiveryButton}>
+          <Pressable
+            style={styles.OrderDeleiveryButton}
+            onPress={() => handelFilter('desserts')}>
             <Text style={styles.OrderDeleiveryTextButton}>Desserts</Text>
           </Pressable>
-          <Pressable style={styles.OrderDeleiveryButton}>
+          <Pressable
+            style={styles.OrderDeleiveryButton}
+            onPress={() => handelFilter('drinks')}>
             <Text style={styles.OrderDeleiveryTextButton}>Drinks</Text>
           </Pressable>
         </View>
